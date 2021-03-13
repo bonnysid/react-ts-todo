@@ -3,15 +3,15 @@ import {ITodo} from "../../interfaces";
 
 type TodoProps = {
     todo: ITodo,
-    deleteHandler: (id:number) => void,
-    completeHandler: (id:number) => void
+    deleteHandler: (id: number) => void,
+    completeHandler: (id: number) => void
 }
 
-const TodoItem:React.FC<TodoProps> = ({todo, deleteHandler, completeHandler}) => (
-    <li>
-        <input type='checkbox' checked={todo.completed} onChange={completeHandler.bind(null, todo.id)}/>
-        <span>{todo.text}</span>
-        <i onClick={deleteHandler.bind(null, todo.id)} className="material-icons prefix">delete</i>
+const TodoItem: React.FC<TodoProps> = ({todo, deleteHandler, completeHandler}) => (
+    <li className='todo' onClick={completeHandler.bind(null, todo.id)}>
+        <input type='checkbox' checked={todo.completed}/>
+        <span className={todo.completed ? 'completed' : undefined}>{todo.text}</span>
+        <i onClick={deleteHandler.bind(null, todo.id)} className="material-icons prefix delete">delete</i>
     </li>
 )
 

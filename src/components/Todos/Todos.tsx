@@ -30,10 +30,7 @@ const Todos: React.FC = () => {
     }
 
     const toggleCompleteTodo = (id:number) => {
-        setTodos(prev => prev.map(todo => {
-            if (todo.id === id) todo.completed = true
-            return todo
-        }))
+        setTodos(prev => prev.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo))
     }
 
     return (

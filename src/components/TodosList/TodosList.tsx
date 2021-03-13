@@ -11,7 +11,7 @@ type TodoListProps = {
 const TodoList: React.FC<TodoListProps> = ({todos, deleteHandler, completeHandler}) => {
     const elements = todos.map(todo => {
 
-        return <TodoItem todo={todo} deleteHandler={deleteHandler} completeHandler={completeHandler}/>
+        return <TodoItem key={todo.id} todo={todo} deleteHandler={deleteHandler} completeHandler={completeHandler}/>
     })
 
     return (

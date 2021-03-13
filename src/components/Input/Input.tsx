@@ -12,15 +12,20 @@ const Input: React.FC<InputProps> = ({placeholder, iconName, onKeyPress}) => {
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
 
     const pressKeyHandler = (e: React.KeyboardEvent) => {
-        if (e.key === 'enter') onKeyPress(value)
+        if (e.key === 'Enter') {
+            onKeyPress(value)
+            setValue('')
+        }
     }
 
+    const id:string = `input-${placeholder.split(' ').join('-')}-${Date.now()}`
+
     return (
-        <div className="input-field">
+        <div className="input-field addInput">
             <i className="material-icons prefix">{iconName}</i>
-            <input onKeyPress={pressKeyHandler} value={value} onChange={changeHandler} id={`input-${placeholder}-${Date.now()}`} type="text"
-                   className="validate"/>
-            <label htmlFor="icon_prefix">{placeholder}</label>
+            <input onKeyPress={pressKeyHandler} value={value} onChange={changeHandler} id={id} type="text"
+                   className="validate" placeholder={placeholder}/>
+            <label htmlFor={id}/>
         </div>
     )
 }
