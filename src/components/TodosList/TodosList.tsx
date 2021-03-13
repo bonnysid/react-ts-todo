@@ -1,14 +1,17 @@
 import React from 'react'
 import {ITodo} from "../../interfaces";
+import TodoItem from "../TodoItem/TodoItem";
 
 type TodoListProps = {
-    todos: ITodo[]
+    todos: ITodo[],
+    deleteHandler: (id: number) => void,
+    completeHandler: (id: number) => void
 }
 
-const TodosList:React.FC<TodoListProps> = ({todos}) => {
+const TodoList: React.FC<TodoListProps> = ({todos, deleteHandler, completeHandler}) => {
     const elements = todos.map(todo => {
 
-        return
+        return <TodoItem todo={todo} deleteHandler={deleteHandler} completeHandler={completeHandler}/>
     })
 
     return (
@@ -17,3 +20,5 @@ const TodosList:React.FC<TodoListProps> = ({todos}) => {
         </ul>
     )
 }
+
+export default TodoList
